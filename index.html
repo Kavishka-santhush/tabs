@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+        }
+
+        .namelist {
+            border: white 2px solid;
+            padding: 20px;
+            padding-left: 0px;
+        }
+
+        a {
+            padding: 20px;
+            cursor: pointer;
+            border: 2px solid white;
+            margin: 0px;
+            margin-left: 0px;
+        }
+
+        .destription {
+            height: 200px;
+            border: 2px solid white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="namelist">
+        <a class="name">London</a>
+        <a class="name">Paris</a>
+        <a class="name">Tokyo</a>
+    </div>
+    <div class="destription">
+        <h2 class="heading">London</h2>
+        <h3 class="des">London is the capital city of England.</h3>
+    </div>
+    <script>
+        Name = document.getElementsByClassName("name");
+        heading = document.getElementsByClassName("heading")[0];
+        des = document.getElementsByClassName("des")[0];
+        details = {
+            London: "London is the capital city of England.",
+            Paris: "Paris is the capital of France.",
+            Tokyo: "Tokyo is the capital of Japan."
+        }
+
+        for (i = 0; i < Name.length; i++) {
+            Name[i].addEventListener("click", function () {
+                heading.innerHTML = this.innerHTML;
+                des.innerHTML = details[this.innerHTML];
+            });
+        }
+
+    </script>
+</body>
+
+</html>
