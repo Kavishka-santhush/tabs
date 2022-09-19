@@ -12,55 +12,82 @@
             color: white;
         }
 
-        .namelist {
+        .container {
             border: white 2px solid;
-            padding: 20px;
-            padding-left: 0px;
+            margin-top: 200px;
         }
 
-        a {
+        button {
+            display: block;
+            background-color: black;
+            border: none;
+            color: white;
             padding: 20px;
+            border: white 2px solid;
+        }
+
+        .active {
+            background-color: red;
+            color: black;
+        }
+
+        .list {
+            display: flex;
+            flex-direction: column;
+            width: 200px;
+            float: left;
+        }
+
+        button:hover {
+            background-color: red;
+        }
+
+        .city {
             cursor: pointer;
-            border: 2px solid white;
-            margin: 0px;
-            margin-left: 0px;
         }
 
-        .destription {
-            height: 200px;
-            border: 2px solid white;
+        .des {
+            height: 135px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
     </style>
 </head>
 
 <body>
-    <div class="namelist">
-        <a class="name">London</a>
-        <a class="name">Paris</a>
-        <a class="name">Tokyo</a>
-    </div>
-    <div class="destription">
-        <h2 class="heading">London</h2>
-        <h3 class="des">London is the capital city of England.</h3>
-    </div>
-    <script>
-        Name = document.getElementsByClassName("name");
-        heading = document.getElementsByClassName("heading")[0];
-        des = document.getElementsByClassName("des")[0];
-        details = {
-            London: "London is the capital city of England.",
-            Paris: "Paris is the capital of France.",
-            Tokyo: "Tokyo is the capital of Japan."
-        }
+    <div class="container">
+        <div class="list">
+            <button class="city">london</button>
+            <button class="city">paris</button>
+            <button class="city">tokyo</button>
+        </div>
+        <div>
+            <h2 class="des"></h2>
+        </div>
+        <script>
+            details = {
+                london: "London is the capital city of England.",
+                paris: "Paris is the capital of France.",
+                tokyo: "Tokyo is the capital of Japan."
+            }
+            button = document.getElementsByClassName("city");
+            des = document.getElementsByClassName("des")[0];
 
-        for (i = 0; i < Name.length; i++) {
-            Name[i].addEventListener("click", function () {
-                heading.innerHTML = this.innerHTML;
-                des.innerHTML = details[this.innerHTML];
-            });
-        }
-
-    </script>
+            des.innerHTML = details.london;
+            button[0].classList.add("active");
+            for (i = 0; i < 3; i++) {
+                button[i].addEventListener("click", function () {
+                    for (k = 0; k < 3; k++) {
+                        button[k].classList.remove("active");
+                    }
+                    des.innerHTML = details[this.innerHTML];
+                    this.classList.add("active");
+                });
+            }
+            // console.log(details["london"]);
+        </script>
+    </div>
 </body>
 
 </html>
